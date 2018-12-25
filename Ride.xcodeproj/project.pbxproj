@@ -12,9 +12,10 @@
 		7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160356E21D1BCED0025B044 /* RoundedShadowView.swift */; };
 		7160357321D1C2910025B044 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357221D1C2910025B044 /* UIView+Extention.swift */; };
 		7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357421D1CA550025B044 /* RoundedShadowButton.swift */; };
+		7160357721D226E90025B044 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7160357621D226E90025B044 /* Menu.storyboard */; };
 		71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */; };
 		71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */; };
-		71FE8C4021D0ED99008A2368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C3E21D0ED99008A2368 /* Main.storyboard */; };
+		71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C3E21D0ED99008A2368 /* Home.storyboard */; };
 		71FE8C4221D0ED9A008A2368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C4121D0ED9A008A2368 /* Assets.xcassets */; };
 		71FE8C4521D0ED9A008A2368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C4321D0ED9A008A2368 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -24,10 +25,11 @@
 		7160356E21D1BCED0025B044 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		7160357221D1C2910025B044 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 		7160357421D1CA550025B044 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
+		7160357621D226E90025B044 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		71FE8C3721D0ED99008A2368 /* Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ride.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		71FE8C3F21D0ED99008A2368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71FE8C3F21D0ED99008A2368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		71FE8C4121D0ED9A008A2368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71FE8C4421D0ED9A008A2368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71FE8C4621D0ED9A008A2368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 		7160356721D119820025B044 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				71FE8C3E21D0ED99008A2368 /* Main.storyboard */,
+				7160357821D226FB0025B044 /* Sroryborads */,
 				7160356921D119A20025B044 /* Custom View */,
 			);
 			path = View;
@@ -90,6 +92,15 @@
 				7160357221D1C2910025B044 /* UIView+Extention.swift */,
 			);
 			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		7160357821D226FB0025B044 /* Sroryborads */ = {
+			isa = PBXGroup;
+			children = (
+				71FE8C3E21D0ED99008A2368 /* Home.storyboard */,
+				7160357621D226E90025B044 /* Menu.storyboard */,
+			);
+			path = Sroryborads;
 			sourceTree = "<group>";
 		};
 		71FE8C2E21D0ED99008A2368 = {
@@ -194,7 +205,8 @@
 			files = (
 				71FE8C4521D0ED9A008A2368 /* LaunchScreen.storyboard in Resources */,
 				71FE8C4221D0ED9A008A2368 /* Assets.xcassets in Resources */,
-				71FE8C4021D0ED99008A2368 /* Main.storyboard in Resources */,
+				71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */,
+				7160357721D226E90025B044 /* Menu.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +276,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		71FE8C3E21D0ED99008A2368 /* Main.storyboard */ = {
+		71FE8C3E21D0ED99008A2368 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				71FE8C3F21D0ED99008A2368 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		71FE8C4321D0ED9A008A2368 /* LaunchScreen.storyboard */ = {
