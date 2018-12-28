@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		07C8D8CDA5F1A4F45E9EEDB5 /* Pods_Ride.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62BE70226F19DC516D15D2F /* Pods_Ride.framework */; };
+		713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FA47121D35B1F006AD10D /* CenterVCDelegate.swift */; };
 		7160356B21D119C30025B044 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160356A21D119C30025B044 /* GradientView.swift */; };
 		7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160356E21D1BCED0025B044 /* RoundedShadowView.swift */; };
 		7160357321D1C2910025B044 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357221D1C2910025B044 /* UIView+Extention.swift */; };
 		7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357421D1CA550025B044 /* RoundedShadowButton.swift */; };
 		7160357721D226E90025B044 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7160357621D226E90025B044 /* Menu.storyboard */; };
+		7160357A21D233A80025B044 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357921D233A80025B044 /* MenuViewController.swift */; };
+		7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357B21D233C90025B044 /* ContainerViewController.swift */; };
+		71E3073621D4D0A400B0316D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073521D4D0A400B0316D /* Login.storyboard */; };
+		71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073721D59D4D00B0316D /* LoginViewController.swift */; };
 		71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */; };
 		71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */; };
 		71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C3E21D0ED99008A2368 /* Home.storyboard */; };
@@ -21,11 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		713FA47121D35B1F006AD10D /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		7160356A21D119C30025B044 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7160356E21D1BCED0025B044 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		7160357221D1C2910025B044 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 		7160357421D1CA550025B044 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		7160357621D226E90025B044 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		7160357921D233A80025B044 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7160357B21D233C90025B044 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		71E3073521D4D0A400B0316D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		71E3073721D59D4D00B0316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71FE8C3721D0ED99008A2368 /* Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ride.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +69,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		713FA47021D35AB7006AD10D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				713FA47121D35B1F006AD10D /* CenterVCDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		7160356621D119750025B044 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +96,10 @@
 		7160356821D1198D0025B044 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				71E3073721D59D4D00B0316D /* LoginViewController.swift */,
+				7160357B21D233C90025B044 /* ContainerViewController.swift */,
 				71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */,
+				7160357921D233A80025B044 /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -97,6 +118,8 @@
 		7160357821D226FB0025B044 /* Sroryborads */ = {
 			isa = PBXGroup;
 			children = (
+				71FE8C4321D0ED9A008A2368 /* LaunchScreen.storyboard */,
+				71E3073521D4D0A400B0316D /* Login.storyboard */,
 				71FE8C3E21D0ED99008A2368 /* Home.storyboard */,
 				7160357621D226E90025B044 /* Menu.storyboard */,
 			);
@@ -124,12 +147,12 @@
 		71FE8C3921D0ED99008A2368 /* Ride */ = {
 			isa = PBXGroup;
 			children = (
+				713FA47021D35AB7006AD10D /* Protocols */,
 				7160356821D1198D0025B044 /* Controller */,
 				7160356721D119820025B044 /* View */,
 				7160356621D119750025B044 /* Model */,
 				71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */,
 				71FE8C4121D0ED9A008A2368 /* Assets.xcassets */,
-				71FE8C4321D0ED9A008A2368 /* LaunchScreen.storyboard */,
 				71FE8C4621D0ED9A008A2368 /* Info.plist */,
 			);
 			path = Ride;
@@ -206,6 +229,7 @@
 				71FE8C4521D0ED9A008A2368 /* LaunchScreen.storyboard in Resources */,
 				71FE8C4221D0ED9A008A2368 /* Assets.xcassets in Resources */,
 				71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */,
+				71E3073621D4D0A400B0316D /* Login.storyboard in Resources */,
 				7160357721D226E90025B044 /* Menu.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,11 +288,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */,
 				71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */,
 				7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */,
+				7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */,
 				71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */,
+				7160357A21D233A80025B044 /* MenuViewController.swift in Sources */,
 				7160356B21D119C30025B044 /* GradientView.swift in Sources */,
 				7160357321D1C2910025B044 /* UIView+Extention.swift in Sources */,
+				71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */,
 				7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

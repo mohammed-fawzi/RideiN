@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import RevealingSplashView
 
 class HomeViewController: UIViewController {
+    
+    let revealingSplachView = RevealingSplashView(iconImage: UIImage(named: "whiteRideLogo")!, iconInitialSize: CGSize(width: 128, height: 115), backgroundColor: UIColor(named: "navyBlue")!)
+    var delegate: CenterVCDelegate?
     var shouldAnimate = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        view.addSubview(revealingSplachView)
+        revealingSplachView.animationType = .heartBeat
+        revealingSplachView.startAnimation()
+        
+        revealingSplachView.heartAttack = true
     }
-
+    
+    
+    
+    @IBAction func MenuButtonTapped(_ sender: Any) {
+        delegate?.toggleMenu()
+    }
+    
     @IBAction func actionButtonTapped(_ sender: RoundedShadowButton) {
         
         if shouldAnimate {

@@ -6,14 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="SGY-1A-cD4">
             <objects>
-                <viewController id="xMi-xV-mp2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVC" id="xMi-xV-mp2" customClass="MenuViewController" customModule="Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OAr-td-Wf8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +29,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="navyBlue"/>
                                 <constraints>
                                     <constraint firstItem="GlT-Kb-qJ8" firstAttribute="leading" secondItem="mP8-6v-td9" secondAttribute="leading" constant="8" id="6FI-Zp-Mxh"/>
                                     <constraint firstItem="GlT-Kb-qJ8" firstAttribute="centerY" secondItem="mP8-6v-td9" secondAttribute="centerY" id="A8p-tr-bBs"/>
@@ -74,6 +75,9 @@
                                 <state key="normal" title="Sing Up / Login">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="AYi-9e-14j" kind="show" id="bTD-cG-kK9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,5 +99,18 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="160.56971514242881"/>
         </scene>
+        <!--Login-->
+        <scene sceneID="bIQ-e1-jgo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="AYi-9e-14j" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BTq-8q-hbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695" y="160"/>
+        </scene>
     </scenes>
+    <resources>
+        <namedColor name="navyBlue">
+            <color red="0.058823529411764705" green="0.058823529411764705" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
