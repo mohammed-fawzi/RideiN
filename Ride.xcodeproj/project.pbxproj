@@ -18,6 +18,8 @@
 		7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357B21D233C90025B044 /* ContainerViewController.swift */; };
 		71E3073621D4D0A400B0316D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073521D4D0A400B0316D /* Login.storyboard */; };
 		71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073721D59D4D00B0316D /* LoginViewController.swift */; };
+		71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */; };
+		71E3073F21D6D2C600B0316D /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073E21D6D2C600B0316D /* DatabaseService.swift */; };
 		71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */; };
 		71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */; };
 		71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C3E21D0ED99008A2368 /* Home.storyboard */; };
@@ -36,6 +38,8 @@
 		7160357B21D233C90025B044 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		71E3073521D4D0A400B0316D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		71E3073721D59D4D00B0316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		71E3073E21D6D2C600B0316D /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		71FE8C3721D0ED99008A2368 /* Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ride.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,14 @@
 			path = Sroryborads;
 			sourceTree = "<group>";
 		};
+		71E3073D21D6D29400B0316D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				71E3073E21D6D2C600B0316D /* DatabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		71FE8C2E21D0ED99008A2368 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +159,7 @@
 		71FE8C3921D0ED99008A2368 /* Ride */ = {
 			isa = PBXGroup;
 			children = (
+				71E3073D21D6D29400B0316D /* Services */,
 				713FA47021D35AB7006AD10D /* Protocols */,
 				7160356821D1198D0025B044 /* Controller */,
 				7160356721D119820025B044 /* View */,
@@ -154,6 +167,7 @@
 				71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */,
 				71FE8C4121D0ED9A008A2368 /* Assets.xcassets */,
 				71FE8C4621D0ED9A008A2368 /* Info.plist */,
+				71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -231,6 +245,7 @@
 				71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */,
 				71E3073621D4D0A400B0316D /* Login.storyboard in Resources */,
 				7160357721D226E90025B044 /* Menu.storyboard in Resources */,
+				71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +313,7 @@
 				7160357321D1C2910025B044 /* UIView+Extention.swift in Sources */,
 				71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */,
 				7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */,
+				71E3073F21D6D2C600B0316D /* DatabaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MohamedFawzy.Ride;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MohamedFawzy.RideiN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,7 +486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MohamedFawzy.Ride;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MohamedFawzy.RideiN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

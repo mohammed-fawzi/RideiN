@@ -125,6 +125,9 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="loginButtonTapped:" destination="y0y-Hu-cRJ" eventType="touchUpInside" id="lCN-5N-hyJ"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyBlueRideLogo" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-5N-IvB">
                                             <rect key="frame" x="135" y="46" width="105" height="95"/>
@@ -142,7 +145,6 @@
                                         <constraint firstItem="UVq-xO-zBV" firstAttribute="top" secondItem="zhU-dA-FpY" secondAttribute="top" constant="24" id="KMr-cS-8D7"/>
                                         <constraint firstAttribute="trailing" secondItem="FCe-dm-B7d" secondAttribute="trailing" constant="15" id="U5D-fr-Fcu"/>
                                         <constraint firstItem="pTb-5N-IvB" firstAttribute="centerX" secondItem="zhU-dA-FpY" secondAttribute="centerX" id="fk5-al-sfB"/>
-                                        <constraint firstItem="FCe-dm-B7d" firstAttribute="width" secondItem="J4a-Cf-rs9" secondAttribute="width" id="h2l-9Q-bKr"/>
                                         <constraint firstItem="pTb-5N-IvB" firstAttribute="top" secondItem="zhU-dA-FpY" secondAttribute="top" constant="46" id="sK4-Vw-qhm"/>
                                         <constraint firstItem="FCe-dm-B7d" firstAttribute="leading" secondItem="zhU-dA-FpY" secondAttribute="leading" constant="15" id="tOn-Ht-iFv"/>
                                     </constraints>
@@ -163,7 +165,9 @@
                         <viewLayoutGuide key="safeArea" id="0ev-7P-ia7"/>
                     </view>
                     <connections>
+                        <outlet property="accountTypeSegmentedControl" destination="ooH-3c-hdI" id="Iym-MU-5HZ"/>
                         <outlet property="emailTextField" destination="mi5-gv-O62" id="L2a-Ka-4YQ"/>
+                        <outlet property="loginButton" destination="FCe-dm-B7d" id="Hce-h0-53A"/>
                         <outlet property="passwordTextField" destination="E73-Vh-oen" id="c9k-Z2-3v6"/>
                     </connections>
                 </viewController>

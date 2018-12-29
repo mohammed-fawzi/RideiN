@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
+    
+    //MARK:- IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var accountTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var loginButton: RoundedShadowButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +27,137 @@ class LoginViewController: UIViewController {
       
     }
     
+    
+    //MARK:- IBActions
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
     }
     
+
     
-    @objc func handleScreenTap(sender: UITapGestureRecognizer ){
-        print("end")
+  
+    
+
+    
+    @IBAction func loginButtonTapped(_ sender: RoundedShadowButton) {
+        
+        if emailTextField.text != "" && passwordTextField.text != "" {
+            loginButton.animateButton(shouldAnimate: true, message: nil)
+            self.view.endEditing(true)
+            
+            if let email = emailTextField.text,
+                let password = passwordTextField.text {
+                
+                signIn(email: email, password: password)
+            }
+            
+        }
+   
+    }
+    
+   
+    
+}
+
+
+//MARK:- Helpers
+extension LoginViewController {
+    
+     @objc fileprivate func handleScreenTap(sender: UITapGestureRecognizer ){
         self.view.endEditing(true)
     }
+    
+    
+    
+    
+    fileprivate func signIn(email: String, password: String) {
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            
+            if error == nil {
+                // user is exist
+                if let user = result?.user {
+                    
+                    self.updateDatabase(user)
+                }
+                print("login successful")
+                self.dismiss(animated: true, completion: nil)
+                
+            }else {
+                
+                self.loginButton.animateButton(shouldAnimate: false, message: "Sign Up / Login")
+                
+                // handle login errors
+                if let errorCode = AuthErrorCode(rawValue: error!._code){
+                    
+                    switch errorCode {
+                    case .wrongPassword:
+                        print("wrong password")
+                        return
+                    case .invalidEmail:
+                        print("invalid email address")
+                        return
+                    default:
+                        print("unexpected error please try again")
+                    }
+                }
+                
+                self.signUp(email: email, password: password)
+                
+            }
+            
+        }
+    }
+    
+    
+    fileprivate func signUp( email: String , password: String) {
+        // user doesn't exist
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) in
+            
+            if error == nil {
+                // sign up sucessful
+                if let user = result?.user {
+                    
+                    self.updateDatabase(user)
+                    
+                }
+                print("sign Up successful")
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                //sign Up failed
+                if let errorCode = AuthErrorCode(rawValue: error!._code){
+                    
+                    switch errorCode {
+                    case .invalidEmail:
+                        print("invalid email address")
+                    case .emailAlreadyInUse:
+                        print("email already exist")
+                    default:
+                        print("unexpected error please try again")
+                        
+                    }
+                }
+            }
+        })
+    }
+    
+    fileprivate func updateDatabase(_ user: User) {
+        if self.accountTypeSegmentedControl.selectedSegmentIndex == 0 {
+            
+            // user is a passenger
+            let userData = ["provider": user.providerID] as [String: Any]
+            
+            DatabaseService.instance.createFirebaseDBUser(uID: user.uid, userData: userData, isDriver: false)
+            
+        }else {
+            // user is a driver
+            let userData = ["provider": user.providerID, "isDriver": true ,"isPickUpModeIsEnabled" : false, "driverIsOnTtrip": false] as [String: Any]
+            
+            DatabaseService.instance.createFirebaseDBUser(uID: user.uid, userData: userData, isDriver: true)
+        }
+    }
+    
     
 }
