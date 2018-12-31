@@ -10,11 +10,13 @@ import Foundation
 import Firebase
 
 
-let databaseReference =  Database.database().reference()
+fileprivate let databaseReference =  Database.database().reference()
 
 final class DatabaseService {
     
     static let instance = DatabaseService()
+    
+    private init(){}
     
     private let DATABASE_REF = databaseReference
     private let USER_REF = databaseReference.child("users")
@@ -45,5 +47,7 @@ final class DatabaseService {
             usersRef.child(uID).updateChildValues(userData)
         }
     }
+    
+
     
 }

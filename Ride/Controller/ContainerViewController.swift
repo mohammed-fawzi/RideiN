@@ -32,7 +32,7 @@ class ContainerViewController: UIViewController {
     var menuCurrentState: menuState = .collapsed
     
     var isStatusBarHidden: Bool = false
-    let centerVCExpandedOffset: CGFloat = 160
+    let centerVCExpandedOffset: CGFloat = 100
     
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return UIStatusBarAnimation.slide
@@ -154,7 +154,7 @@ extension ContainerViewController {
     
     func setUpWhiteCoverView(){
         let whiteCoverView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        whiteCoverView.backgroundColor = .white
+        whiteCoverView.backgroundColor = .lightGray
         whiteCoverView.alpha = 0.0
         whiteCoverView.tag = 13
         centerVC.view.addSubview(whiteCoverView)
@@ -164,7 +164,7 @@ extension ContainerViewController {
         whiteCoverView.addGestureRecognizer(tapGesture)
 
         UIView.animate(withDuration: 0.2) {
-            whiteCoverView.alpha = 0.75
+            whiteCoverView.alpha = 0.3
         }
     }
     

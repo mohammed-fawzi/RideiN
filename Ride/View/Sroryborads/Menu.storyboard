@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xMi-xV-mp2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,10 +28,41 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PbK-MJ-sN1">
+                                        <rect key="frame" x="8" y="15" width="141" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Ui-W5-grp">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="AIa-yi-rBf"/>
+                                                    <constraint firstAttribute="height" constant="50" id="f6h-sP-WjG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-xM-fl0" userLabel="labels stack">
+                                                <rect key="frame" x="58" y="0.0" width="83" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cne-fa-UJD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="25"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ii-9A-onB">
+                                                        <rect key="frame" x="0.0" y="28" width="35" height="22"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="navyBlue"/>
                                 <constraints>
+                                    <constraint firstItem="PbK-MJ-sN1" firstAttribute="centerY" secondItem="mP8-6v-td9" secondAttribute="centerY" id="0rz-zE-4Z0"/>
                                     <constraint firstItem="GlT-Kb-qJ8" firstAttribute="leading" secondItem="mP8-6v-td9" secondAttribute="leading" constant="8" id="6FI-Zp-Mxh"/>
+                                    <constraint firstItem="PbK-MJ-sN1" firstAttribute="leading" secondItem="mP8-6v-td9" secondAttribute="leading" constant="8" id="7Gi-bp-hGL"/>
                                     <constraint firstItem="GlT-Kb-qJ8" firstAttribute="centerY" secondItem="mP8-6v-td9" secondAttribute="centerY" id="A8p-tr-bBs"/>
                                     <constraint firstAttribute="height" constant="80" id="qaV-Ky-wwb"/>
                                 </constraints>
@@ -45,6 +76,9 @@
                                         <state key="normal" title="Payment">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="paymentButtonTapped:" destination="xMi-xV-mp2" eventType="touchUpInside" id="Spu-mx-E5U"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xf-6j-SXC">
                                         <rect key="frame" x="0.0" y="46" width="95" height="41"/>
@@ -52,6 +86,9 @@
                                         <state key="normal" title="Your Trips">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tripsButtonTapped:" destination="xMi-xV-mp2" eventType="touchUpInside" id="6KW-7q-NZr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md9-iV-eVf">
                                         <rect key="frame" x="0.0" y="92" width="47" height="41"/>
@@ -59,6 +96,9 @@
                                         <state key="normal" title="Help">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="helpButtonTapped:" destination="xMi-xV-mp2" eventType="touchUpInside" id="zsF-wr-WN4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q19-fB-y7T">
                                         <rect key="frame" x="0.0" y="138" width="79" height="41"/>
@@ -66,49 +106,75 @@
                                         <state key="normal" title="Settings">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="settingsButtonTapped:" destination="xMi-xV-mp2" eventType="touchUpInside" id="8xq-zu-3i5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSg-W4-Iko">
                                 <rect key="frame" x="16" y="606" width="343" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
-                                <state key="normal" title="Sing Up / Login">
+                                <state key="normal" title="Sign Up / Login">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="AYi-9e-14j" kind="show" id="bTD-cG-kK9"/>
+                                    <action selector="loginLogoutButtonTapped:" destination="xMi-xV-mp2" eventType="touchUpInside" id="oXa-bl-PLh"/>
                                 </connections>
                             </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7sd-qH-Oup">
+                                <rect key="frame" x="16" y="532.5" width="145.5" height="55.5"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uVP-1B-82A">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="pickupSwitchToggled:" destination="xMi-xV-mp2" eventType="valueChanged" id="pdp-VG-bu7"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP MODE DISABLED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rt-L8-DCT">
+                                        <rect key="frame" x="0.0" y="39" width="145.5" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IEc-BY-NGq" firstAttribute="leading" secondItem="fKB-Jt-pJt" secondAttribute="leading" constant="16" id="0XI-vA-3bE"/>
+                            <constraint firstItem="JSg-W4-Iko" firstAttribute="top" secondItem="7sd-qH-Oup" secondAttribute="bottom" constant="18" id="2VZ-Tz-nug"/>
                             <constraint firstItem="fKB-Jt-pJt" firstAttribute="trailing" secondItem="JSg-W4-Iko" secondAttribute="trailing" constant="16" id="Hr3-V5-FqY"/>
                             <constraint firstItem="IEc-BY-NGq" firstAttribute="top" secondItem="mP8-6v-td9" secondAttribute="bottom" constant="24" id="Leu-yb-OeY"/>
                             <constraint firstItem="JSg-W4-Iko" firstAttribute="leading" secondItem="fKB-Jt-pJt" secondAttribute="leading" constant="16" id="Mib-n1-qqT"/>
                             <constraint firstItem="mP8-6v-td9" firstAttribute="top" secondItem="OAr-td-Wf8" secondAttribute="top" id="Th1-O9-8f5"/>
                             <constraint firstItem="mP8-6v-td9" firstAttribute="leading" secondItem="fKB-Jt-pJt" secondAttribute="leading" id="U1b-gN-pfc"/>
                             <constraint firstItem="fKB-Jt-pJt" firstAttribute="bottom" secondItem="JSg-W4-Iko" secondAttribute="bottom" constant="20" id="kXJ-Mv-YbX"/>
+                            <constraint firstItem="7sd-qH-Oup" firstAttribute="leading" secondItem="fKB-Jt-pJt" secondAttribute="leading" constant="16" id="qw1-3r-Eqj"/>
                             <constraint firstItem="mP8-6v-td9" firstAttribute="trailing" secondItem="fKB-Jt-pJt" secondAttribute="trailing" id="sHp-3y-Irp"/>
                             <constraint firstItem="fKB-Jt-pJt" firstAttribute="trailing" secondItem="IEc-BY-NGq" secondAttribute="trailing" constant="16" id="wxD-fC-S41"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fKB-Jt-pJt"/>
                     </view>
+                    <connections>
+                        <outlet property="NameLabel" destination="cne-fa-UJD" id="SaZ-gy-viX"/>
+                        <outlet property="SignUpLoginButton" destination="JSg-W4-Iko" id="Wju-lf-RKl"/>
+                        <outlet property="accountTypeLabel" destination="9ii-9A-onB" id="IV5-VS-Spe"/>
+                        <outlet property="avatarImageView" destination="4Ui-W5-grp" id="X9a-MX-4Ed"/>
+                        <outlet property="menuLabel" destination="GlT-Kb-qJ8" id="9eV-77-1Id"/>
+                        <outlet property="pickUpModeLabel" destination="2rt-L8-DCT" id="INg-Rs-Nps"/>
+                        <outlet property="pickUpModeSwitch" destination="uVP-1B-82A" id="zdw-Bz-W9C"/>
+                        <outlet property="pickupModeStackView" destination="7sd-qH-Oup" id="BPB-Rz-cOV"/>
+                        <outlet property="userDetailsStackView" destination="PbK-MJ-sN1" id="sq5-67-sEe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNA-gy-WRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="160.56971514242881"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="bIQ-e1-jgo">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="AYi-9e-14j" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BTq-8q-hbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="695" y="160"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="avatarPlaceholder" width="101" height="101"/>
         <namedColor name="navyBlue">
             <color red="0.058823529411764705" green="0.058823529411764705" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

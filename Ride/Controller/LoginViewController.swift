@@ -23,8 +23,7 @@ class LoginViewController: UIViewController {
         self.view.bindToKeyboard()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
         self.view.addGestureRecognizer(tapGesture)
-        
-      
+    
     }
     
     
@@ -35,11 +34,6 @@ class LoginViewController: UIViewController {
     }
     
 
-    
-  
-    
-
-    
     @IBAction func loginButtonTapped(_ sender: RoundedShadowButton) {
         
         if emailTextField.text != "" && passwordTextField.text != "" {
@@ -70,22 +64,19 @@ extension LoginViewController {
     
     
     
-    
+    //MARK:- Database Helpers
     fileprivate func signIn(email: String, password: String) {
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             
             if error == nil {
-                // user is exist
-                if let user = result?.user {
-                    
-                    self.updateDatabase(user)
-                }
+                // login successful user is exist
+               
                 print("login successful")
                 self.dismiss(animated: true, completion: nil)
                 
             }else {
-                
+                // login failed
                 self.loginButton.animateButton(shouldAnimate: false, message: "Sign Up / Login")
                 
                 // handle login errors
@@ -147,17 +138,23 @@ extension LoginViewController {
         if self.accountTypeSegmentedControl.selectedSegmentIndex == 0 {
             
             // user is a passenger
-            let userData = ["provider": user.providerID] as [String: Any]
+            let userData = [kPROVIDER: user.providerID] as [String: Any]
             
             DatabaseService.instance.createFirebaseDBUser(uID: user.uid, userData: userData, isDriver: false)
             
         }else {
             // user is a driver
-            let userData = ["provider": user.providerID, "isDriver": true ,"isPickUpModeIsEnabled" : false, "driverIsOnTtrip": false] as [String: Any]
+            let userData = [kPROVIDER: user.providerID,
+                            kISDRIVER : true,
+                            kIS_PICKUP_MODE_ENABLED : false,
+                            kDRIVER_IS_ON_TRIP: false] as [String: Any]
             
             DatabaseService.instance.createFirebaseDBUser(uID: user.uid, userData: userData, isDriver: true)
         }
     }
     
     
+    
 }
+
+

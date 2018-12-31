@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 import RevealingSplashView
 
 class HomeViewController: UIViewController {
     
-    let revealingSplachView = RevealingSplashView(iconImage: UIImage(named: "whiteRideLogo")!, iconInitialSize: CGSize(width: 128, height: 115), backgroundColor: UIColor(named: "navyBlue")!)
+    @IBOutlet weak var mapView: MKMapView!
     var delegate: CenterVCDelegate?
+
+    let revealingSplachView = RevealingSplashView(iconImage: UIImage(named: "whiteRideLogo")!, iconInitialSize: CGSize(width: 128, height: 115), backgroundColor: UIColor(named: "navyBlue")!)
     var shouldAnimate = true
 
     override func viewDidLoad() {

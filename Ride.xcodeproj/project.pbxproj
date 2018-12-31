@@ -16,6 +16,8 @@
 		7160357721D226E90025B044 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7160357621D226E90025B044 /* Menu.storyboard */; };
 		7160357A21D233A80025B044 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357921D233A80025B044 /* MenuViewController.swift */; };
 		7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357B21D233C90025B044 /* ContainerViewController.swift */; };
+		719942FA21D8C34D009C0829 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719942F921D8C34D009C0829 /* Constants.swift */; };
+		719942FC21D8C72A009C0829 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719942FB21D8C72A009C0829 /* User.swift */; };
 		71E3073621D4D0A400B0316D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073521D4D0A400B0316D /* Login.storyboard */; };
 		71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073721D59D4D00B0316D /* LoginViewController.swift */; };
 		71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */; };
@@ -36,6 +38,8 @@
 		7160357621D226E90025B044 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		7160357921D233A80025B044 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7160357B21D233C90025B044 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		719942F921D8C34D009C0829 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		719942FB21D8C72A009C0829 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		71E3073521D4D0A400B0316D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		71E3073721D59D4D00B0316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 		7160356621D119750025B044 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				719942FB21D8C72A009C0829 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +135,14 @@
 			path = Sroryborads;
 			sourceTree = "<group>";
 		};
+		719942F821D8C332009C0829 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				719942F921D8C34D009C0829 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		71E3073D21D6D29400B0316D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 		71FE8C3921D0ED99008A2368 /* Ride */ = {
 			isa = PBXGroup;
 			children = (
+				719942F821D8C332009C0829 /* Helpers */,
 				71E3073D21D6D29400B0316D /* Services */,
 				713FA47021D35AB7006AD10D /* Protocols */,
 				7160356821D1198D0025B044 /* Controller */,
@@ -303,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719942FC21D8C72A009C0829 /* User.swift in Sources */,
 				713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */,
 				71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */,
 				7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */,
@@ -314,6 +329,7 @@
 				71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */,
 				7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */,
 				71E3073F21D6D2C600B0316D /* DatabaseService.swift in Sources */,
+				719942FA21D8C34D009C0829 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
