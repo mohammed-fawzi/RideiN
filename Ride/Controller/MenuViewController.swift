@@ -144,11 +144,22 @@ extension MenuViewController {
             DatabaseService.instance.driversRef.child(user.uid).observeSingleEvent(of: .value) { (snapShot) in
                 
                 if  snapShot.exists()  {
-                    
+                  
                     DispatchQueue.main.async {
                         self.NameLabel.text = user.email
                         self.accountTypeLabel.text = "Driver"
                         self.pickupModeStackView.isHidden = false
+                    }
+                    
+                    
+                    if  snapShot.childSnapshot(forPath: kIS_PICKUP_MODE_ENABLED).value as! Bool {
+                        DispatchQueue.main.async {
+                            self.pickUpModeSwitch.isOn = true
+                        }
+                    }else {
+                        DispatchQueue.main.async {
+                            self.pickUpModeSwitch.isOn = false
+                        }
                     }
                     
                     print("driver")

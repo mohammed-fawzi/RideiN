@@ -138,7 +138,8 @@ extension LoginViewController {
         if self.accountTypeSegmentedControl.selectedSegmentIndex == 0 {
             
             // user is a passenger
-            let userData = [kPROVIDER: user.providerID] as [String: Any]
+            let userData = [kPROVIDER: user.providerID,
+                            kISDRIVER: false] as [String: Any]
             
             DatabaseService.instance.createFirebaseDBUser(uID: user.uid, userData: userData, isDriver: false)
             

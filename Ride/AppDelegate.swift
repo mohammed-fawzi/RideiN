@@ -24,11 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        FirebaseApp.configure()
+        
         containerVC = ContainerViewController()
         window?.rootViewController = containerVC
         window?.makeKeyAndVisible()
         
-        FirebaseApp.configure()
         
         return true
     }

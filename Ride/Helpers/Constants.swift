@@ -18,6 +18,7 @@ public let kDRIVERS = "drivers"
 
 //MARK:- users
 public let kPROVIDER = "provider"
+public let kCOORDINATES = "coordinates"
 
 
 //MARK:- drivers

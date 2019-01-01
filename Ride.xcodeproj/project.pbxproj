@@ -18,6 +18,7 @@
 		7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160357B21D233C90025B044 /* ContainerViewController.swift */; };
 		719942FA21D8C34D009C0829 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719942F921D8C34D009C0829 /* Constants.swift */; };
 		719942FC21D8C72A009C0829 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719942FB21D8C72A009C0829 /* User.swift */; };
+		719942FE21DA1ED0009C0829 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719942FD21DA1ED0009C0829 /* DriverAnnotation.swift */; };
 		71E3073621D4D0A400B0316D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073521D4D0A400B0316D /* Login.storyboard */; };
 		71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073721D59D4D00B0316D /* LoginViewController.swift */; };
 		71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */; };
@@ -40,6 +41,7 @@
 		7160357B21D233C90025B044 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		719942F921D8C34D009C0829 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		719942FB21D8C72A009C0829 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		719942FD21DA1ED0009C0829 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		71E3073521D4D0A400B0316D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		71E3073721D59D4D00B0316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				7160356E21D1BCED0025B044 /* RoundedShadowView.swift */,
 				7160357421D1CA550025B044 /* RoundedShadowButton.swift */,
 				7160357221D1C2910025B044 /* UIView+Extention.swift */,
+				719942FD21DA1ED0009C0829 /* DriverAnnotation.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */,
 				71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */,
 				7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */,
+				719942FE21DA1ED0009C0829 /* DriverAnnotation.swift in Sources */,
 				7160357C21D233C90025B044 /* ContainerViewController.swift in Sources */,
 				71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */,
 				7160357A21D233A80025B044 /* MenuViewController.swift in Sources */,
