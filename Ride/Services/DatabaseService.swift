@@ -50,6 +50,37 @@ final class DatabaseService {
         }
     }
     
+    func updateUser(id: String, with userData: [String: Any]){
+        
+        usersRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists()  {
+                self.usersRef.child(id).updateChildValues(userData)
+
+            }
+        }
+        
+    }
+    
+    func deleteFromUser(id: String, value: String){
+        usersRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists()  {
+                self.usersRef.child(id).child(value).removeValue()
+                
+            }
+        }
+    }
+    
+    func checkUser(id:String, forValue value: String, completion: @escaping (Bool) -> Void ){
+        
+        usersRef.child(id).child(value).observeSingleEvent(of: .value) { (snapShot) in
+            if snapShot.exists() {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    
     func updateUserLocation(userID: String, withCoordinate coordinate: CLLocationCoordinate2D ){
       
             usersRef.child(userID).observeSingleEvent(of: .value) { (snapshot) in

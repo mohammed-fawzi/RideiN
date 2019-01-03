@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07C8D8CDA5F1A4F45E9EEDB5 /* Pods_Ride.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62BE70226F19DC516D15D2F /* Pods_Ride.framework */; };
+		712FFF7E21DC4BB1009EFE03 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FFF7D21DC4BB1009EFE03 /* PassengerAnnotation.swift */; };
+		712FFF8021DDE6FF009EFE03 /* PickUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712FFF7F21DDE6FF009EFE03 /* PickUp.storyboard */; };
 		713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FA47121D35B1F006AD10D /* CenterVCDelegate.swift */; };
 		7160356B21D119C30025B044 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160356A21D119C30025B044 /* GradientView.swift */; };
 		7160356F21D1BCED0025B044 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160356E21D1BCED0025B044 /* RoundedShadowView.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		712FFF7D21DC4BB1009EFE03 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
+		712FFF7F21DDE6FF009EFE03 /* PickUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickUp.storyboard; sourceTree = "<group>"; };
 		713FA47121D35B1F006AD10D /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		7160356A21D119C30025B044 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7160356E21D1BCED0025B044 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				7160357421D1CA550025B044 /* RoundedShadowButton.swift */,
 				7160357221D1C2910025B044 /* UIView+Extention.swift */,
 				719942FD21DA1ED0009C0829 /* DriverAnnotation.swift */,
+				712FFF7D21DC4BB1009EFE03 /* PassengerAnnotation.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				71E3073521D4D0A400B0316D /* Login.storyboard */,
 				71FE8C3E21D0ED99008A2368 /* Home.storyboard */,
 				7160357621D226E90025B044 /* Menu.storyboard */,
+				712FFF7F21DDE6FF009EFE03 /* PickUp.storyboard */,
 			);
 			path = Sroryborads;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 				71FE8C4221D0ED9A008A2368 /* Assets.xcassets in Resources */,
 				71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */,
 				71E3073621D4D0A400B0316D /* Login.storyboard in Resources */,
+				712FFF8021DDE6FF009EFE03 /* PickUp.storyboard in Resources */,
 				7160357721D226E90025B044 /* Menu.storyboard in Resources */,
 				71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */,
 			);
@@ -333,6 +340,7 @@
 				71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */,
 				7160357521D1CA550025B044 /* RoundedShadowButton.swift in Sources */,
 				71E3073F21D6D2C600B0316D /* DatabaseService.swift in Sources */,
+				712FFF7E21DC4BB1009EFE03 /* PassengerAnnotation.swift in Sources */,
 				719942FA21D8C34D009C0829 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
