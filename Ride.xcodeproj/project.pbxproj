@@ -25,6 +25,7 @@
 		71E3073821D59D4D00B0316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073721D59D4D00B0316D /* LoginViewController.swift */; };
 		71E3073C21D6C9A600B0316D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */; };
 		71E3073F21D6D2C600B0316D /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3073E21D6D2C600B0316D /* DatabaseService.swift */; };
+		71EF04C921DDEA4300B67517 /* PickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF04C821DDEA4300B67517 /* PickUpViewController.swift */; };
 		71FE8C3B21D0ED99008A2368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */; };
 		71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */; };
 		71FE8C4021D0ED99008A2368 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FE8C3E21D0ED99008A2368 /* Home.storyboard */; };
@@ -50,6 +51,7 @@
 		71E3073721D59D4D00B0316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E3073B21D6C9A600B0316D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71E3073E21D6D2C600B0316D /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		71EF04C821DDEA4300B67517 /* PickUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpViewController.swift; sourceTree = "<group>"; };
 		71FE8C3721D0ED99008A2368 /* Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ride.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FE8C3A21D0ED99008A2368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				7160357B21D233C90025B044 /* ContainerViewController.swift */,
 				71FE8C3C21D0ED99008A2368 /* HomeViewController.swift */,
 				7160357921D233A80025B044 /* MenuViewController.swift */,
+				71EF04C821DDEA4300B67517 /* PickUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71EF04C921DDEA4300B67517 /* PickUpViewController.swift in Sources */,
 				719942FC21D8C72A009C0829 /* User.swift in Sources */,
 				713FA47221D35B1F006AD10D /* CenterVCDelegate.swift in Sources */,
 				71FE8C3D21D0ED99008A2368 /* HomeViewController.swift in Sources */,

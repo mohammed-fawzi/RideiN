@@ -1,7 +1,117 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMf-EE-MVe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Pick Up View Controller-->
+        <scene sceneID="9iR-Lb-fCB">
+            <objects>
+                <viewController id="aMf-EE-MVe" customClass="PickUpViewController" customModule="Ride" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yfl-aI-KeM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OJO-eu-XHo" userLabel="app name">
+                                <rect key="frame" x="143" y="30" width="89" height="34.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RIDE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqX-4K-l9V">
+                                        <rect key="frame" x="0.0" y="0.0" width="59.5" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrt-Gv-0Uo">
+                                        <rect key="frame" x="61.5" y="0.0" width="27.5" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTA-0o-ZUW" customClass="RoundedShadowButton" customModule="Ride" customModuleProvider="target">
+                                <rect key="frame" x="16" y="596" width="343" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="28"/>
+                                <state key="normal" title="ACCEPT TRIP">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="acceptButtonTapped:" destination="aMf-EE-MVe" eventType="touchUpInside" id="I6z-gG-d9a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to pick up this passenger?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEA-w1-R5Z">
+                                <rect key="frame" x="16" y="554" width="343" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hzj-GB-wWt">
+                                <rect key="frame" x="25" y="171" width="325" height="325"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="325" id="ShW-jO-1DT"/>
+                                    <constraint firstAttribute="width" constant="325" id="UwD-K4-Ez9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="162.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmm-lM-BF5" userLabel="Cancel button">
+                                <rect key="frame" x="16" y="30" width="32" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Js6-HK-vl5"/>
+                                    <constraint firstAttribute="height" constant="31" id="d9U-lR-KvW"/>
+                                </constraints>
+                                <state key="normal" image="cancelBtn"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="aMf-EE-MVe" eventType="touchUpInside" id="C1S-gk-GJQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="navyBlue"/>
+                        <constraints>
+                            <constraint firstItem="QTA-0o-ZUW" firstAttribute="top" secondItem="qEA-w1-R5Z" secondAttribute="bottom" constant="20" id="DLF-Gp-7cm"/>
+                            <constraint firstItem="hzj-GB-wWt" firstAttribute="centerY" secondItem="yfl-aI-KeM" secondAttribute="centerY" id="F9Y-Br-XZN"/>
+                            <constraint firstItem="hzj-GB-wWt" firstAttribute="centerX" secondItem="yfl-aI-KeM" secondAttribute="centerX" id="Ihx-ZJ-X3F"/>
+                            <constraint firstItem="dmm-lM-BF5" firstAttribute="top" secondItem="utv-Ov-n6A" secondAttribute="top" constant="10" id="V5d-Nl-jBy"/>
+                            <constraint firstItem="QTA-0o-ZUW" firstAttribute="leading" secondItem="utv-Ov-n6A" secondAttribute="leading" constant="16" id="ZCs-1k-Z4n"/>
+                            <constraint firstItem="qEA-w1-R5Z" firstAttribute="leading" secondItem="utv-Ov-n6A" secondAttribute="leading" constant="16" id="cck-4k-uKn"/>
+                            <constraint firstItem="dmm-lM-BF5" firstAttribute="leading" secondItem="utv-Ov-n6A" secondAttribute="leading" constant="16" id="eCv-GP-57C"/>
+                            <constraint firstItem="utv-Ov-n6A" firstAttribute="trailing" secondItem="QTA-0o-ZUW" secondAttribute="trailing" constant="16" id="fok-mu-0qd"/>
+                            <constraint firstItem="OJO-eu-XHo" firstAttribute="centerX" secondItem="yfl-aI-KeM" secondAttribute="centerX" id="gQG-f1-C0b"/>
+                            <constraint firstItem="utv-Ov-n6A" firstAttribute="trailing" secondItem="qEA-w1-R5Z" secondAttribute="trailing" constant="16" id="gVv-6I-AWr"/>
+                            <constraint firstItem="OJO-eu-XHo" firstAttribute="top" secondItem="utv-Ov-n6A" secondAttribute="top" constant="10" id="n9O-yN-6IB"/>
+                            <constraint firstItem="utv-Ov-n6A" firstAttribute="bottom" secondItem="QTA-0o-ZUW" secondAttribute="bottom" constant="20" id="vbT-RG-KYE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="utv-Ov-n6A"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="hzj-GB-wWt" id="gw4-va-4zr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TpD-yD-qva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.599999999999994" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancelBtn" width="32" height="31"/>
+        <namedColor name="navyBlue">
+            <color red="0.058823529411764705" green="0.058823529411764705" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

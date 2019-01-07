@@ -12,7 +12,7 @@ import MapKit
 
 
 
- let databaseReference =  Database.database().reference()
+fileprivate let databaseReference =  Database.database().reference()
 
 final class DatabaseService {
     
@@ -42,6 +42,7 @@ final class DatabaseService {
     }
     
     
+    //MARK:- users
     func createFirebaseDBUser(uID: String, userData: Dictionary<String,Any>, isDriver: Bool){
         if isDriver {
             driversRef.child(uID).updateChildValues(userData)
@@ -91,6 +92,37 @@ final class DatabaseService {
    
     }
     
+    
+    func passengerIsOnTrip(passengerId: String, handler: @escaping (_ status: Bool, _ driverKey: String?, _ tripKey: String?) -> Void) {
+        tripsRef.observe(.value, with: { (tripSnapshot) in
+            if let tripSnapshot = tripSnapshot.children.allObjects as? [DataSnapshot] {
+                for trip in tripSnapshot {
+                    if trip.key == passengerId {
+                        if trip.childSnapshot(forPath: kTRIP_IS_ACCEPTED).value as? Bool == true {
+                            let driverId = trip.childSnapshot(forPath: kDRIVERID).value as? String
+                            handler(true, driverId, trip.key)
+                        } else {
+                            handler(false, nil, nil)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    //MARK:- drivers
+    
+    func userIsDriver(userId: String, handler: @escaping (_ status: Bool) -> Void) {
+        
+        driversRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                handler(true)
+            }else{
+                handler(false)
+            }
+        }
+    }
+    
     func updateDriverLocation(userID: String, withCoordinate coordinate: CLLocationCoordinate2D ){
             
             driversRef.child(userID).observeSingleEvent(of: .value) { (snapshot) in
@@ -104,6 +136,41 @@ final class DatabaseService {
 
             }
      
+    }
+    
+    func driverIsAvailable(id:String, completion: @escaping (Bool?)-> Void){
+        driversRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                if snapshot.childSnapshot(forPath: kIS_PICKUP_MODE_ENABLED).value as? Bool == true &&
+                    snapshot.childSnapshot(forPath: kDRIVER_IS_ON_TRIP).value as? Bool == false {
+                    completion(true)
+                }else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
+    func driverIsOnTrip(driverId: String, handler: @escaping (_ status: Bool, _ driverKey: String?, _ tripKey: String?) -> Void) {
+        driversRef.child(driverId).child(kDRIVER_IS_ON_TRIP).observe(.value, with: { (driverTripStatusSnapshot) in
+            if let driverTripStatusSnapshot = driverTripStatusSnapshot.value as? Bool {
+                if driverTripStatusSnapshot == true {
+                    self.tripsRef.observeSingleEvent(of: .value, with: { (tripSnapshot) in
+                        if let tripSnapshot = tripSnapshot.children.allObjects as? [DataSnapshot] {
+                            for trip in tripSnapshot {
+                                if trip.childSnapshot(forPath: kDRIVERID).value as? String == driverId {
+                                    handler(true, driverId, trip.key)
+                                } else {
+                                    return
+                                }
+                            }
+                        }
+                    })
+                } else {
+                    handler(false, nil, nil)
+                }
+            }
+        })
     }
     
     func loadDriverAnnotaitonsFromDB(mapView: MKMapView){
@@ -145,28 +212,82 @@ final class DatabaseService {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+    
+
+    
+    
+    //MARK:- trips
+    func createTrip(){
+        if let userId = Auth.auth().currentUser?.uid {
+            
+            usersRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
+                if let snapshot = snapshot.value as? [String: Any] {
+                    let pickUpCoordinate = snapshot[kCOORDINATES] as! NSArray
+                    let destinationCoordinate = snapshot[kDESTINATION_COORDINTE] as! NSArray
+                    
+                    let tripData = [kPICKUP_COORDINATE: pickUpCoordinate,
+                                    kDESTINATION_COORDINTE: destinationCoordinate,
+                                    kPASSENGER: userId,
+                                    kTRIP_IS_ACCEPTED: false] as [String: Any]
+                    self.tripsRef.child(userId).updateChildValues(tripData)
+
+                }
+            }
+   
+        }
+    }
+    
+    func fetchTrip(forDriver driverId: String, completion: @escaping (_ trip: [String:Any]?)->Void){
+        tripsRef.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                 for tripSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
+                    if tripSnapshot.childSnapshot(forPath: kDRIVERID).value as? String == driverId {
+                        completion(tripSnapshot.value as? [String:Any])
                     }
                 }
             }
         }
     }
     
-//
-//    func fetchDriversLocations(){
-//        var locations: [CLLocationCoordinate2D] = []
-//        driversRef.observeSingleEvent(of: .value) { (snapshot) in
-//            for snapshot in snapshot.children.allObjects as! [DataSnapshot] {
-//                if snapshot.hasChild(kCOORDINATES) {
-//                    if let coordinate = snapshot.childSnapshot(forPath: kCOORDINATES).value as? [CLLocationCoordinate2D] {
-//                        locations.append(contentsOf: coordinate)
-//                    }
-//                }
-//                print("downloaded user.................")
-//            }
-//        }
-//    }
+    func observeTrips(completion: @escaping ([String:Any]?)-> Void){
+        
+        tripsRef.observe(.value) { (snapshot) in
+            if snapshot.exists() {
+                
+                for tripSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
+                    if let tripDict = tripSnapshot.value as? [String: Any] {
+                        completion(tripDict)
+                    }
+                }
+            }
+        }
+    }
+    
+    func acceptTrip(withPassengerId passengerId: String,forDriverId driverId: String) {
+        tripsRef.child(passengerId).updateChildValues([kTRIP_IS_ACCEPTED: true,
+                                                       kDRIVERID: driverId])
+        driversRef.child(driverId).updateChildValues([kDRIVER_IS_ON_TRIP: true])
+    }
+    
+    func cancelTrip(withPassengerId passengerId: String,forDriverId driverId: String) {
+        tripsRef.child(passengerId).removeValue()
+        driversRef.child(driverId).updateChildValues([kDRIVER_IS_ON_TRIP: false])
+        usersRef.child(passengerId).child(kDESTINATION_COORDINTE).removeValue()
+    }
+    
+    
+    
+ 
+    
+    
     
 
+    
     
 }
 

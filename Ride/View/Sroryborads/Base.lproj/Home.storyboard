@@ -223,6 +223,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="POM-n2-PbR" id="3J9-ci-Y72"/>
                         <outlet property="centerMapButton" destination="2sa-Jd-fsM" id="lXL-VB-GS0"/>
                         <outlet property="fromTextField" destination="pwp-5o-tDS" id="Yge-lL-0Lp"/>
                         <outlet property="mapView" destination="gpQ-pb-om7" id="7gs-Vu-t39"/>

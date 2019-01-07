@@ -28,3 +28,8 @@ public let kDRIVER_IS_ON_TRIP = "driverIsOnTtrip"
 public let kIS_PICKUP_MODE_ENABLED = "isPickUpModeIsEnabled"
 public let kISDRIVER = "isDriver"
 
+//MARK:- trips
+public let kPICKUP_COORDINATE = "pickUpCoordinate"
+public let kPASSENGER = "passenger"
+public let kTRIP_IS_ACCEPTED =  "tripIsAccepted"
+public let kDRIVERID = "driverId"
