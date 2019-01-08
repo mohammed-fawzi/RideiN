@@ -40,7 +40,8 @@ class HomeViewController: UIViewController {
     var searchResults: [MKMapItem] = []
     
     var route: MKRoute!
-
+    
+    var buttonAction: ButtonAction = .requestTrip
   
     
     //MARK:- ViewController Life cylce
@@ -49,6 +50,39 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+        
+        DatabaseService.instance.userIsDriver(userId: userId) { (isDriver) in
+            if isDriver {
+                self.actionButton.isHidden = true
+            }else{
+                self.actionButton.isEnabled = false
+                self.actionButton.alpha = 0.8
+            }
+        }
+        
+        DatabaseService.instance.tripsRef.observe(.childRemoved) { (tripSnapshot) in
+            if tripSnapshot.key == userId {
+                
+                    self.removeOverlay()
+                    self.removeUserPin()
+                    self.removeDestinationPin()
+                    self.centerMapOnUserLocation()
+                    self.actionButton.setTitle(kREQUEST_RIDE, for: .normal)
+                    self.actionButton.isEnabled = true
+                    self.toTextField.text = ""
+                
+            }
+            else if tripSnapshot.childSnapshot(forPath: kDRIVERID).value as! String == userId {
+                self.removeOverlay()
+                self.removeUserPin()
+                self.removeDestinationPin()
+                self.centerMapOnUserLocation()
+                self.actionButton.isHidden = true
+            }
+        }
+        
+       
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -123,6 +157,11 @@ class HomeViewController: UIViewController {
                     let passengerAnnotation = PassengerAnnotation(coordinate: pickupCoordinate, key: passengerId)
                     self.mapView.addAnnotation(passengerAnnotation)
                     self.createRoute(fromMapItem: nil, toMapItem: MKMapItem(placemark: pickupPlacemark))
+                   
+                    self.setRegionForMonitoring(forAnnotationType: .pickUp, withCoordinate: pickupCoordinate)
+                    
+                    self.buttonAction = .getDirectionToPassenger
+                    self.actionButton.isHidden = false
                 }
             }
 
@@ -144,18 +183,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func actionButtonTapped(_ sender: RoundedShadowButton) {
-        
-        if actionButtonShouldAnimate {
-            sender.animateButton(shouldAnimate: true, message: nil)
-            actionButtonShouldAnimate = false
-            
-            DatabaseService.instance.createTrip()
-
-        }else {
-            sender.animateButton(shouldAnimate: false , message: "done")
-            actionButtonShouldAnimate = true
-
-        }
+        buttonSelector(forAction: buttonAction)
         
     }
     
@@ -198,14 +226,57 @@ extension HomeViewController: CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            print("auth is granted.........")
 
 
         }else {
-            print("request auth..........")
             locationManager.requestAlwaysAuthorization()
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        guard let driverId = Auth.auth().currentUser?.uid else {return}
+        
+        DatabaseService.instance.driverIsOnTrip(driverId: driverId) { (isOnTrip, driverId, tripId) in
+            if isOnTrip {
+                
+                if region.identifier == kPICKUP {
+                    self.buttonAction = .startTrip
+                    self.actionButton.setTitle(kSTART_TRIP, for: .normal)
+                }
+                else if region.identifier == kDESTINATION {
+                    self.buttonAction = .endTrip
+                    self.actionButton.setTitle(kEND_TRIP, for: .normal)
+                }
+            }
+            
+        }
+     
+    }
+    
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//        guard let driverId = Auth.auth().currentUser?.uid else {return}
+//
+//        DatabaseService.instance.driverIsOnTrip(driverId: driverId) { (isOnTrip, driverId, tripId) in
+//
+//            if isOnTrip {
+//
+//                if region.identifier == kPICKUP {
+//
+//                    self.actionButton.setTitle(kGET_DIRECTIONS, for: .normal)
+//                    print("driver exit pickup.................")
+//                }
+//                else if region.identifier == kDESTINATION {
+//                    self.actionButton.setTitle(kGET_DIRECTIONS, for: .normal)
+//                    print("driver exit destination.................")
+//
+//                }
+//            }
+//
+//
+//        }
+//
+//    }
     
 }
 
@@ -284,7 +355,7 @@ extension HomeViewController: MKMapViewDelegate {
         }
     }
     
-
+    
 
 
 }
@@ -329,6 +400,9 @@ extension HomeViewController: UITextFieldDelegate {
         removeUserPin()
         mapView.removeOverlay(route.polyline)
         
+        actionButton.isEnabled = false
+        actionButton.alpha = 0.8
+
         // remove destination coordinate from firebase
         if let userId = Auth.auth().currentUser?.uid {
             DatabaseService.instance.deleteFromUser(id: userId, value: kDESTINATION_COORDINTE)
@@ -347,7 +421,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "locationCell")
+       let cell = UITableViewCell(style: .subtitle, reuseIdentifier: kLOCATION_CELL)
      
         cell.textLabel?.text = searchResults[indexPath.row].name
         cell.detailTextLabel?.text = searchResults[indexPath.row].placemark.title
@@ -378,7 +452,12 @@ extension HomeViewController: UITableViewDelegate {
         
         dropPinFor(placemark: selectedMapItem.placemark)
         
-            createRoute(fromMapItem: nil, toMapItem: selectedMapItem)
+        createRoute(fromMapItem: nil, toMapItem: selectedMapItem)
+        
+        actionButton.isEnabled = true
+        actionButton.alpha = 1
+
+        
         // save destination coordinate to firebase
         let destinationCoordinate =  selectedMapItem.placemark.coordinate
         if let userId = Auth.auth().currentUser?.uid {
@@ -406,6 +485,94 @@ extension HomeViewController: UITableViewDelegate {
 
 //MARK:- Helpers
 extension HomeViewController {
+    
+    
+    func buttonSelector(forAction action: ButtonAction){
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+       
+        switch action {
+        case .requestTrip:
+            actionButton.animateButton(shouldAnimate: true, message: nil)
+            DatabaseService.instance.createTrip()
+
+        case .getDirectionToPassenger:
+            DatabaseService.instance.driverIsOnTrip(driverId: userId) { (isOnTrip, driverId, TripId) in
+                if isOnTrip{
+                    DatabaseService.instance.fetchTrip(forDriver: userId, completion: { (tripDict) in
+                        if let tripDict = tripDict {
+                            let pickupCoordintearray = tripDict[kPICKUP_COORDINATE] as! [CLLocationDegrees]
+                            let pickUpCoordinate = CLLocationCoordinate2D(latitude: pickupCoordintearray[0], longitude: pickupCoordintearray[1])
+                            let pickUpMapItem = MKMapItem(placemark: MKPlacemark(coordinate: pickUpCoordinate))
+                            pickUpMapItem.name = "Passenger Pickup Point"
+                            pickUpMapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+                        }
+                    })
+                }
+            }
+            
+        case .cancelTrip:
+            DatabaseService.instance.passengerIsOnTrip(passengerId: userId) { (isOnTrip, driverId, tripId) in
+                self.removeDestinationPin()
+                self.removeOverlay()
+                self.centerMapOnUserLocation()
+                self.toTextField.text = ""
+                DatabaseService.instance.cancelTrip(withPassengerId: userId, forDriverId: driverId!)
+                self.buttonAction = .requestTrip
+                
+            }
+        
+        case .startTrip:
+            DatabaseService.instance.driverIsOnTrip(driverId: userId) { (isOnTrip, driverId, tripId) in
+                if isOnTrip {
+                    self.removeOverlay()
+                    DatabaseService.instance.tripsRef.child(tripId!).updateChildValues([kTRIP_ON_PROGRESS: true])
+                    
+                    DatabaseService.instance.fetchTrip(forDriver: driverId!, completion: { (tripDict) in
+                        if let tripDict = tripDict {
+                            let destinationCoordinteArray = tripDict[kDESTINATION_COORDINTE] as! [CLLocationDegrees]
+                            let destinationCoordinate = CLLocationCoordinate2D(latitude: destinationCoordinteArray[0], longitude: destinationCoordinteArray[1])
+                            let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate)
+                            let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+                            
+                            self.dropPinFor(placemark: destinationPlacemark)
+                            self.createRoute(fromMapItem: nil, toMapItem: destinationMapItem)
+                            self.setRegionForMonitoring(forAnnotationType: .destination, withCoordinate: destinationCoordinate)
+                            self.buttonAction = .getDirectionToDestination
+                            self.actionButton.setTitle(kGET_DIRECTIONS, for: .normal)
+                            
+                        }
+                    })
+                }
+            }
+            
+        case .getDirectionToDestination:
+            DatabaseService.instance.driverIsOnTrip(driverId: userId) { (isOnTrip, driverId, TripId) in
+                if isOnTrip{
+                    DatabaseService.instance.fetchTrip(forDriver: userId, completion: { (tripDict) in
+                        if let tripDict = tripDict {
+                            let destinationCoordinteArray = tripDict[kDESTINATION_COORDINTE] as! [CLLocationDegrees]
+                            let destinationCoordinate = CLLocationCoordinate2D(latitude: destinationCoordinteArray[0], longitude: destinationCoordinteArray[1])
+                            let destinationMapItem = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate))
+                           
+                            destinationMapItem.name = "Destination Point"
+                            destinationMapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+                        }
+                    })
+                }
+            }
+        case .endTrip:
+            DatabaseService.instance.driverIsOnTrip(driverId: userId) { (isOnTrip, driverId, tripId) in
+                if isOnTrip{
+                    DatabaseService.instance.cancelTrip(withPassengerId: tripId!, forDriverId: driverId!)
+                    self.removeOverlay()
+                    self.removeUserPin()
+                    self.removeDestinationPin()
+                    self.centerMapOnUserLocation()
+                    self.actionButton.isHidden = true
+                }
+            }
+        }
+    }
     
     //MARK: Splash View
     fileprivate func setupRevealingSplachView() {
@@ -450,7 +617,6 @@ extension HomeViewController {
     
     fileprivate func dropPinFor(passengerLocation: CLLocationCoordinate2D?) {
         // dorp in passenger annotation
-        //FIXME: should not drop in if user is driver
         if let passengerCoordinate = locationManager.location?.coordinate,
             let userId = Auth.auth().currentUser?.uid{
             let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate, key: userId)
@@ -608,13 +774,48 @@ extension HomeViewController {
                                 self.createRoute(fromMapItem: driverMapItem, toMapItem: pickUpMapItem)
                                 
                                 DispatchQueue.main.async {
-                                    self.actionButton.animateButton(shouldAnimate: false, message: "CANCEL TRIP")
+                                    self.actionButton.animateButton(shouldAnimate: false, message: kCANCEL_TRIP)
+                                    self.buttonAction = .cancelTrip
                                 }
                             }
                         })
+                        
+                        if tripDict[kTRIP_ON_PROGRESS] as? Bool == true {
+                            self.removeOverlay()
+                            self.removeUserPin()
+                            self.removeDriverPin()
+                            
+                            let destinationCoordinateArray = tripDict[kDESTINATION_COORDINTE] as! [CLLocationDegrees]
+                            let destinationCoordinate = CLLocationCoordinate2D(latitude: destinationCoordinateArray[0], longitude: destinationCoordinateArray[1])
+                            let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate)
+                            
+                            self.dropPinFor(placemark: destinationPlacemark)
+                            self.createRoute(fromMapItem: nil, toMapItem: MKMapItem(placemark: destinationPlacemark))
+                            
+                            self.actionButton.setTitle(kON_TRIP, for: .normal)
+                            self.actionButton.isEnabled = false
+                            
+                        }
+                        
+                        
+                        
                     }
+                    
+                    
                 })
             }
+        }
+    }
+    
+    func setRegionForMonitoring(forAnnotationType annotation: AnnotationType, withCoordinate coordinate: CLLocationCoordinate2D){
+        
+        if annotation == .pickUp {
+            let pickUpRegion = CLCircularRegion(center: coordinate, radius: 100, identifier: kPICKUP)
+            locationManager.startMonitoring(for: pickUpRegion)
+        }
+        else if annotation == .destination  {
+            let destionationRegion = CLCircularRegion(center: coordinate, radius: 100, identifier: kDESTINATION)
+            locationManager.startMonitoring(for: destionationRegion)
         }
     }
     
@@ -623,7 +824,7 @@ extension HomeViewController {
         tableView.frame = CGRect(x: 20, y: view.frame.height , width: view.frame.width - 40, height: view.frame.height - 160)
         tableView.layer.cornerRadius = 5.0
         tableView.rowHeight = 60
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: kLOCATION_CELL)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)

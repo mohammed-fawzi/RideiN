@@ -9,18 +9,13 @@
 import UIKit
 import QuartzCore
 
-enum menuState {
-    case expanded
-    case collapsed
-}
-
-enum showVC {
-    case homeVC
-}
 
 
 
-var shownVC: showVC = .homeVC
+
+
+
+var shownVC: ShowVC = .homeVC
 class ContainerViewController: UIViewController {
     
     
@@ -29,7 +24,7 @@ class ContainerViewController: UIViewController {
     var menuVC: MenuViewController!
     var centerVC: UIViewController!
     
-    var menuCurrentState: menuState = .collapsed
+    var menuCurrentState: MenuState = .collapsed
     
     var isStatusBarHidden: Bool = false
     let centerVCExpandedOffset: CGFloat = 100
@@ -124,7 +119,7 @@ extension ContainerViewController: CenterVCDelegate {
 extension ContainerViewController {
     
     
-    func initCenterVC(screen: showVC){
+    func initCenterVC(screen: ShowVC){
         var presentingVC: UIViewController
         
         shownVC = screen
