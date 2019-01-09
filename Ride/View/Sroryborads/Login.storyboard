@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-bD-NwS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-bD-NwS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="v1e-9a-VpQ">
@@ -177,7 +177,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="2992" height="2000"/>
+        <image name="background" width="1125" height="2436"/>
         <image name="cancelBtn" width="32" height="31"/>
         <image name="navyBlueRideLogo" width="1148" height="998"/>
         <namedColor name="navyBlue">
