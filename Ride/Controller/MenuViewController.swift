@@ -136,7 +136,6 @@ extension MenuViewController {
                         self.pickupModeStackView.isHidden = true
                     }
                     
-                    print("passenger")
                 }
             }
             
@@ -162,7 +161,6 @@ extension MenuViewController {
                         }
                     }
                     
-                    print("driver")
                 }
             }
             
