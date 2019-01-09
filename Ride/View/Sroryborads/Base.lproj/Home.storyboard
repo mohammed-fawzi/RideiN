@@ -226,6 +226,7 @@
                         <outlet property="actionButton" destination="POM-n2-PbR" id="3J9-ci-Y72"/>
                         <outlet property="centerMapButton" destination="2sa-Jd-fsM" id="lXL-VB-GS0"/>
                         <outlet property="fromTextField" destination="pwp-5o-tDS" id="Yge-lL-0Lp"/>
+                        <outlet property="locationTextFieldsContainer" destination="Tpf-qF-Vkk" id="cPo-Hq-Bqo"/>
                         <outlet property="mapView" destination="gpQ-pb-om7" id="7gs-Vu-t39"/>
                         <outlet property="toLocationIndicatorView" destination="Nsy-tL-6HV" id="ziG-nq-xGB"/>
                         <outlet property="toTextField" destination="ZXK-X6-nYE" id="gwL-WZ-NOG"/>
