@@ -1,4 +1,5 @@
-# RideiN
+<img src="https://github.com/mohammed-fawzi/RideiN/blob/master/screenshots/app-icon.png"  width="100" height="100" /> <img>
+# RideiN  
 
 ## OVERVIEW
 RideiN is a ride sharing app that allows users to request a ride from the nearest driver
